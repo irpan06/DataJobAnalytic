@@ -45,8 +45,8 @@ DataJobAnalytic/
 ├── scripts/                            # Python scripts for data ingestion (The 'EL' in ELT)
 │   └── extract_load.py                 # Extracts raw data and loads it to BigQuery (Bronze layer)
 │
-├── images/                             # Project assets and screenshots
-│   └── dashboard.jpg                   # Looker Studio dashboard preview
+├── assets/                             # Project assets and screenshots
+│  
 │
 └── README.md                           # Main project documentation
 ```
