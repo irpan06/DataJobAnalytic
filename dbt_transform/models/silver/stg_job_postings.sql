@@ -11,8 +11,9 @@ SELECT
             COALESCE(job_schedule_type, 'unknown'), '|',
             COALESCE(DATE(job_posted_date))
         )
-    ) AS job_hash,
+    ) AS job_id,
     COALESCE(TRIM(company_name), 'Unknown') AS company_name,
+    FARM_FINGERPRINT(company_name) AS company_id,
     COALESCE(TRIM(job_title_short), 'Unknown') AS job_title_short,
     COALESCE(TRIM(job_title), 'Not Specified') AS job_title,
     COALESCE(TRIM(job_location), 'Not Specified') AS job_location,
