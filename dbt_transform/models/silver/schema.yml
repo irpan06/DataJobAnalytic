@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: stg_job_postings
+    description: "Silver layer table that cleans raw data, standardizes it, and generates deterministic hash IDs (job_id & company_id) before feeding into the dimension and fact tables."
+    columns:
+      - name: job_id
+        description: "Unique primary key (deterministic hash) for each job posting."
+        tests:
+          - unique
+          - not_null
+
+      - name: company_id
+        description: "Foreign key (deterministic hash) for the company."
+        tests:
+          - not_null
+
+      - name: company_name
+        description: "The name of the hiring company. Filtered to exclude NULL or empty values."
+        tests:
+          - not_null
+
+      - name: job_posted_date
+        description: "The date the job posting was published."
+        tests:
+          - not_null
+
+      - name: job_skills
+        description: "Raw text array containing the required skills (not unnested)."

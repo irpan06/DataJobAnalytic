@@ -1,0 +1,71 @@
+version: 2
+
+models:
+  # --- DIMENSION TABLES ---
+  - name: dim_company
+    description: "Company dimension table (1 row = 1 unique company)."
+    columns:
+      - name: company_id
+        description: "Primary key for the company."
+        tests:
+          - unique
+          - not_null
+      - name: company_name
+        description: "Full name of the company."
+        tests:
+          - not_null
+
+  - name: dim_skill
+    description: "Skill dimension table (1 row = 1 unique skill)."
+    columns:
+      - name: skill_id
+        description: "Primary key for the skill."
+        tests:
+          - unique
+          - not_null
+      - name: skill_name
+        description: "Specific name of the skill (e.g., Python, SQL)."
+        tests:
+          - not_null
+
+  # --- FACT TABLE ---
+  - name: fact_job_postings
+    description: "Fact table containing details and metrics for each job posting. Updated incrementally."
+    columns:
+      - name: job_id
+        description: "Primary key for the job posting fact table."
+        tests:
+          - unique
+          - not_null
+      - name: company_id
+        description: "Foreign key referencing dim_company."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_company')
+              field: company_id
+      - name: job_posted_date
+        description: "Used as the watermark for incremental updates."
+        tests:
+          - not_null
+
+  # --- BRIDGE TABLE (MANY-TO-MANY) ---
+  - name: bridge_skill_job
+    description: "Bridge table to resolve the many-to-many relationship between jobs and skills. Updated incrementally."
+    columns:
+      - name: job_id
+        description: "Foreign key referencing fact_job_postings."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('fact_job_postings')
+              field: job_id
+      - name: skill_id
+        description: "Foreign key referencing dim_skill."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_skill')
+              field: skill_id
+      - name: job_posted_date
+        description: "Used for incremental synchronization alongside the fact table."
