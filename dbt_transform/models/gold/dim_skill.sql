@@ -24,7 +24,9 @@ unique_skills AS(
     SELECT DISTINCT
         skill_name,
     FROM split_skills
-    WHERE skill_name IS NOT NULL AND skill_name != ''
+    WHERE skill_name IS NOT NULL 
+      AND skill_name != ''
+      AND skill_name != '[]'
 )
 
 SELECT DISTINCT
