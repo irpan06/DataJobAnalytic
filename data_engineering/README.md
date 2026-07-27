@@ -38,7 +38,7 @@ The data engineering pipeline adopts the **Medallion Architecture** to progressi
 
 ## Data Modelling
 
-![data_model]()
+![data_model](/assets/images/ERD.webp)
 
 The pipeline adopts a **Star Schema** to optimize analytical queries. A centralized fact table stores job posting transactions, while dimension tables provide descriptive attributes such as company and skills.
 
