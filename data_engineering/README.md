@@ -71,3 +71,40 @@ data_engineering/
     │   └── gold/                # Populates Star Schema and business metrics
     ├── tests/                   # Data quality and integrity testing
     └── dbt_project.yml          # Core dbt configuration
+```
+
+## Execution Guide
+This guide provides step-by-step instructions to initialize the databases, build the analytical data warehouse, and execute the end-to-end ETL pipeline
+
+### Prerequisites & Environment Setup
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/irpan06/Data-Job-Analytics-Platform.git
+   cd Data-Job-Analytics-Platform
+2. **Install Dependencies**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+    ```
+3. **GCP Configuration:**
+    Ensure you have a Google Cloud Platform project with BigQuery enabled and authenticate your environment:
+    ``` bash
+    gcloud auth application-default login
+    ```
+4. **dbt Configuration:**
+    Ensure your `profiles.yml` is correctly configured to connect to your BigQuery project.
+### Step-by-Step Execution
+#### Step 1: Extract and Load (Bronze Layer)
+Execute the Python script to fetch the raw dataset and ingest it into the BigQuery staging table:
+```bash
+python data_engineering/scripts/extract_load.py
+```
+
+#### Step 2: Transform (Silver & Gold Layers)
+Navigate to the dbt project directory, install dependencies, and execute the transformation pipeline that standardizes data into the Star Schema:
+```bash
+cd data_engineering/dbt_transform
+dbt deps
+dbt run
+```
