@@ -12,7 +12,7 @@ SELECT
             COALESCE(DATE(job_posted_date))
         )
     ) AS job_id,
-    COALESCE(TRIM(company_name), 'Unknown') AS company_name,
+    COALESCE(TRIM(company_name), '') AS company_name,
     FARM_FINGERPRINT(company_name) AS company_id,
     COALESCE(TRIM(job_title_short), 'Unknown') AS job_title_short,
     COALESCE(TRIM(job_title), 'Not Specified') AS job_title,
@@ -39,3 +39,5 @@ FROM {{ source('raw_data', 'job_postings') }}
 
 WHERE job_posted_date IS NOT NULL 
   AND job_title_short IS NOT NULL
+  AND company_name IS NOT NULL
+  AND TRIM(company_name)!= ''
