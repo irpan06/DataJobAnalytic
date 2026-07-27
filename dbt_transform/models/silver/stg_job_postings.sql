@@ -8,8 +8,11 @@ SELECT
             COALESCE(company_name, 'unknown'), '|', 
             COALESCE(job_title, 'unknown'), '|', 
             COALESCE(job_location, 'unknown'), '|',
+            COALESCE(job_country, 'unknown'), '|',
+            COALESCE(search_location, 'unknown'), '|',
             COALESCE(job_schedule_type, 'unknown'), '|',
-            COALESCE(DATE(job_posted_date))
+            COALESCE(CAST(job_skills AS STRING), 'none'), '|',
+            COALESCE(job_posted_date)
         )
     ) AS job_id,
     COALESCE(TRIM(company_name), '') AS company_name,
@@ -41,3 +44,5 @@ WHERE job_posted_date IS NOT NULL
   AND job_title_short IS NOT NULL
   AND company_name IS NOT NULL
   AND TRIM(company_name)!= ''
+
+QUALIFY ROW_NUMBER() OVER (PARTITION BY job_id ORDER BY job_posted_date DESC) = 1
