@@ -108,3 +108,28 @@ cd data_engineering/dbt_transform
 dbt deps
 dbt run
 ```
+Successful Execution Output:
+```text
+15:07:53  Running with dbt=1.12.0
+15:07:54  Registered adapter: bigquery=1.12.0
+15:07:55  Found 5 models, 20 data tests, 1 source, 562 macros
+15:07:55
+15:07:55  Concurrency: 1 threads (target='dev')
+15:07:55
+15:08:01  1 of 5 START sql table model wh_silver.stg_job_postings ........................ [RUN]
+15:08:08  1 of 5 OK created sql table model wh_silver.stg_job_postings ................... [CREATE TABLE (1.6m rows, 408.7 MiB processed) in 7.44s]
+15:08:08  2 of 5 START sql incremental model mart_gold.bridge_skill_job .................. [RUN]
+15:08:15  2 of 5 OK created sql incremental model mart_gold.bridge_skill_job ............. [CREATE TABLE (7.1m rows, 91.8 MiB processed) in 7.35s]
+15:08:15  3 of 5 START sql table model mart_gold.dim_company ............................. [RUN]
+15:08:20  3 of 5 OK created sql table model mart_gold.dim_company ........................ [CREATE TABLE (215.9k rows, 38.1 MiB processed) in 4.40s]
+15:08:20  4 of 5 START sql table model mart_gold.dim_skill ............................... [RUN]
+15:08:23  4 of 5 OK created sql table model mart_gold.dim_skill .......................... [CREATE TABLE (255.0 rows, 67.2 MiB processed) in 3.58s]
+15:08:23  5 of 5 START sql incremental model mart_gold.fact_job_postings ................. [RUN]
+15:08:29  5 of 5 OK created sql incremental model mart_gold.fact_job_postings ............ [CREATE TABLE (1.6m rows, 243.6 MiB processed) in 5.83s]
+15:08:29
+15:08:29  Finished running 2 incremental models, 3 table models in 0 hours 0 minutes and 34.60 seconds (34.60s).
+15:08:29
+15:08:29  Completed successfully
+15:08:29
+15:08:29  Done. PASS=5 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=5
+```
