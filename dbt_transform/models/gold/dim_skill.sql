@@ -22,7 +22,7 @@ split_skills AS(
 
 unique_skills AS(
     SELECT DISTINCT
-        skill_name,
+        skill_name
     FROM split_skills
     WHERE skill_name IS NOT NULL 
       AND skill_name != ''
