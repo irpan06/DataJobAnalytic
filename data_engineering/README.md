@@ -1,7 +1,7 @@
 # Data Engineering
 
 ## Overview
-> _This section documents the complete data engineering implementation of the project, covering data preparation, warehouse design, ETL development, orchestration, and monitoring._
+> _This section documents the complete data engineering implementation of the project, covering raw data ingestion, cloud data warehouse design, ELT pipeline development, and dbt transformations._
 
 > **TL;DR for Engineering Reviewers:**
 > * **Decoupled Architecture:** Extracted and loaded raw data via **Python** and modeled analytics in **Google BigQuery (OLAP)**.
