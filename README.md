@@ -14,42 +14,29 @@ The project demonstrates the complete data lifecycle, adopting the **ELT (Extrac
 - Standardize and automate data transformations using dbt.
 - Deliver business insights through dynamic BI dashboards.
 
+## Project Structure
 
-## Repository Structure
+The project is divided into two complementary phases.
 
+### [Part 1 — Data Engineering]()
+Design and implementation of the analytics platform, including data ingestion, transformation, and warehouse modeling.
 
-```text
-DataJobAnalytic/
-|
-├── dbt_transform/                      # dbt project for data transformation (The 'T' in ELT)
-|   |
-│   ├── macros/                         # Custom dbt macros
-│   │   └── generate_schema_name.sql
-|   |
-│   ├── models/                         # SQL models for Medallion Architecture
-|   |   |
-│   │   ├── silver/                     # Cleansed, deduplicated, and standardized data
-│   │   │   └── stg_job_postings.sql
-|   |   |
-│   │   ├── gold/                       # Star Schema (Fact, Dimension, and Bridge tables)
-│   │   │   ├── fact_job_postings.sql
-│   │   │   ├── dim_company.sql
-│   │   │   ├── dim_skill.sql
-│   │   │   └── bridge_skill_job.sql
-|   |   |
-│   │   └── sources.yml                 # Source data configurations mapping to Bronze
-|   |
-│   ├── tests/                          # Data quality and integrity tests
-│   └── dbt_project.yml                 # Core dbt configuration file
-│
-├── scripts/                            # Python scripts for data ingestion (The 'EL' in ELT)
-│   └── extract_load.py                 # Extracts raw data and loads it to BigQuery (Bronze layer)
-│
-├── assets/                             # Project assets and screenshots
-│  
-│
-└── README.md                           # Main project documentation
-```
+**Key topics**
+- Python Extract & Load (EL)
+- Medallion Architecture
+- BigQuery Data Warehouse
+- Star Schema
+- dbt
+
+### [Part 2 — Data Analytics & Visualization]()
+Analysis and visualization of curated data to generate business insights.
+
+**Key topics**
+- Looker Studio
+- Dashboard Design
+- KPI & Metric Definitions
+- Interactive Filters
+- Job Market Trends
 
 ## Technology Stack
 | Category               | Technology             | Purpose                                                                                          |
