@@ -18,7 +18,7 @@ The project demonstrates the complete data lifecycle, adopting the **ELT (Extrac
 
 The project is divided into two complementary phases.
 
-### [Part 1: Data Engineering]()
+### [Part 1: Data Engineering](/data_engineering/README.md)
 Design and implementation of the analytics platform, including data ingestion, transformation, and warehouse modeling.
 
 **Key topics**
