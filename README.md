@@ -18,7 +18,7 @@ The project demonstrates the complete data lifecycle, adopting the **ELT (Extrac
 
 The project is divided into two complementary phases.
 
-### [Part 1 — Data Engineering]()
+### [Part 1: Data Engineering]()
 Design and implementation of the analytics platform, including data ingestion, transformation, and warehouse modeling.
 
 **Key topics**
@@ -28,7 +28,7 @@ Design and implementation of the analytics platform, including data ingestion, t
 - Star Schema
 - dbt
 
-### [Part 2 — Data Analytics & Visualization]()
+### [Part 2: Data Analytics & Visualization]()
 Analysis and visualization of curated data to generate business insights.
 
 **Key topics**
