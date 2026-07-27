@@ -59,18 +59,29 @@ The data engineering module contains all components required to build the data e
 ```text
 data_engineering/
 │
-├── README.md                    # Data Engineering technical documentation
+├── README.md                            # Data Engineering technical documentation
 │
-├── scripts/                     # Orchestration and automation entry points
-│   └── extract_load.py          # Python script extracting and loading data to Bronze layer
+├── scripts/                             # Orchestration and automation entry points
+│   └── extract_load.py                  # Python script extracting and loading data to Bronze layer
 │
-└── dbt_transform/               # SQL DML transformation scripts
-    ├── macros/                  # Custom dbt macros (e.g., dynamic schema naming)
+└── dbt_transform/                       # SQL DML transformation scripts
+    ├── macros/                          
+    │   └── generate_schema_name.sql     # Custom dbt macro for dynamic schema routing
+    │
     ├── models/                  
-    │   ├── silver/              # Cleanses, deduplicates, and standardizes data
-    │   └── gold/                # Populates Star Schema and business metrics
-    ├── tests/                   # Data quality and integrity testing
-    └── dbt_project.yml          # Core dbt configuration
+    │   ├── silver/                      # Cleanses, deduplicates, and standardizes data
+    │   │   ├── schema.yml               # Source definitions, documentation, and data tests
+    │   │   └── stg_job_postings.sql     # Silver layer transformation logic
+    │   │
+    │   └── gold/                        # Populates Star Schema and business metrics
+    │       ├── bridge_skill_job.sql     # Resolves Many-to-Many relationships
+    │       ├── dim_company.sql          # Company dimension table
+    │       ├── dim_skill.sql            # Skill dimension table
+    │       ├── fact_job_postings.sql    # Central fact table for job postings
+    │       └── schema.yml               # Gold layer documentation and data tests
+    │
+    ├── tests/                           # Custom data quality and referential integrity tests
+    └── dbt_project.yml                  # Core dbt configuration             
 ```
 
 ## Execution Guide
