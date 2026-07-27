@@ -24,6 +24,7 @@ split_skills AS(
     SELECT
         job_id,
         TRIM(skill, " '\"") AS skill_name,
+        job_posted_date
     FROM staging_data,
     UNNEST(SPLIT(TRIM(job_skills, '[]'), ',')) AS skill
 ),
@@ -31,7 +32,8 @@ split_skills AS(
 unique_skills AS(
     SELECT DISTINCT
         job_id,
-        skill_name
+        skill_name,
+        job_posted_date
     FROM split_skills
     WHERE skill_name IS NOT NULL
       AND skill_name != ''
@@ -40,5 +42,6 @@ unique_skills AS(
 
 SELECT
     job_id,
-    FARM_FINGERPRINT(skill_name) AS skill_id
+    FARM_FINGERPRINT(skill_name) AS skill_id,
+    job_posted_date
 FROM unique_skills
