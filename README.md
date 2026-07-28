@@ -28,7 +28,7 @@ Design and implementation of the analytics platform, including data ingestion, t
 - Star Schema
 - dbt
 
-### [Part 2: Data Analytics & Visualization]()
+### [Part 2: Data Analytics & Visualization](/data_analytics/README.md)
 Analysis and visualization of curated data to generate business insights.
 
 **Key topics**
