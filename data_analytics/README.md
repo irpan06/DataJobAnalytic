@@ -1,19 +1,19 @@
 # Data Analytics & Business Intelligence
 
-![dashboard](/assets/images/dashboard.jpg)
-
 ## Overview
-This section focuses on extracting actionable business insights from the modeled Data Warehouse. The analytical workflow is divided into two main components:
-1. **Executive Dashboard:** For high-level KPI monitoring and ad-hoc visual exploration.
-2. **Deep-Dive Analysis:** A programmatic approach to uncover granular market trends using SQL and Python.
+>_This section focuses on extracting actionable business insights from the modeled Data Warehouse. The analytical workflow is divided into two main components:_
+>1. **Executive Dashboard:** For high-level KPI monitoring and ad-hoc visual exploration.
+>2. **Deep-Dive Analysis:** A programmatic approach to uncover granular market trends using SQL and Python._
 
-## 1. Executive Dashboard
+## Executive Dashboard
+
+![dashboard](/assets/images/dashboard.jpg)
 
 The dashboard provides an interactive, at-a-glance view of the job market landscape. It is directly connected to the aggregated Gold Layer (`mart_gold`) in BigQuery, ensuring high performance and data accuracy.
 
 🔗 [Link to Interactive Dashboard](https://datastudio.google.com/reporting/b2364af9-a2b7-4e2c-ab2b-57ea9d8e1fd7)
 
-## 2. Deep-Dive Exploratory Analysis (Jupyter Notebook)
+## Deep-Dive Exploratory Analysis (Jupyter Notebook)
 While the dashboard monitors standard KPIs, complex business questions regarding workplace flexibility and the true market valuation of technical skills require deeper statistical exploration.
 
 The [EDA_Job_Market.ipynb](/data_analytics/notebooks/EDA_Job_Market.ipynb) notebook connects programmatically to the BigQuery Data Warehouse to perform complex SQL aggregations (utilizing Window Functions and CTEs) before visualizing the insights.
