@@ -5,6 +5,8 @@
 >1. **Executive Dashboard:** For high-level KPI monitoring and ad-hoc visual exploration.
 >2. **Deep-Dive Analysis:** A programmatic approach to uncover granular market trends using SQL and Python._
 
+**Note:** This document details the **Data Analytics & Business Intelligence** module of the [End-to-End Data Job Analytics Platform](../README.md)
+
 ## Executive Dashboard
 
 ![dashboard](/assets/images/dashboard.jpg)
