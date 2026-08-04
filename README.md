@@ -1,47 +1,94 @@
-# Data Job Analytics Platform
+<div align="center">
 
-![architecure](/assets/images/architecture.png)
+# 📊 Data Job Analytics Platform
 
-## Overview
+### *From Raw Job Postings to Production-Grade Business Insights*
 
-> _An end-to-end Data Engineering and Data Analytics project that transforms raw job posting data into a modern analytical data warehouse and provides business insights through interactive dashboards._
+[![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![BigQuery](https://img.shields.io/badge/Google%20BigQuery-Data%20Warehouse-4285F4?logo=googlebigquery&logoColor=white)](https://cloud.google.com/bigquery)
+[![dbt](https://img.shields.io/badge/dbt-Transformation-FF694B?logo=dbt&logoColor=white)](https://www.getdbt.com/)
+[![Looker Studio](https://img.shields.io/badge/Looker%20Studio-Visualization-4285F4?logo=looker&logoColor=white)](https://lookerstudio.google.com/)
+[![Status](https://img.shields.io/badge/Status-Active-success)](#)
 
-The project demonstrates the complete data lifecycle, adopting the **ELT (Extract, Load, Transform)** paradigm. It utilizes Python for data ingestion into Google BigQuery, orchestrates Star Schema transformations via dbt, and delivers analytical reporting through Google Looker Studio.
+</div>
 
-## Objectives
-- Build an end-to-end ELT data pipeline.
-- Design a dimensional data warehouse utilizing a Medallion Architecture.
-- Standardize and automate data transformations using dbt.
-- Deliver business insights through dynamic BI dashboards.
+<p align="center">
+  <img src="/assets/images/architecture.png" alt="Architecture Overview" width="850">
+</p>
 
-## Project Structure
+<br>
 
-This project utilizes a modular architecture that strictly separates data ingestion, business analytics, and downstream application consumption.
+## 🧭 Overview
 
-### Phase 1: Data Engineering (✅)
-**[View Full Engineering Documentation](data_engineering/README.md)**
+> An end-to-end **Data Engineering & Data Analytics** project that transforms raw job posting data into a modern analytical data warehouse and delivers business insights through interactive dashboards.
 
-The first pillar focuses on the foundation of the data factory. The ELT (Extract, Load, Transform) process is designed to ensure data quality and integrity before any analysis occurs.
-* **Extraction & Ingestion:** Pulling raw data from external sources into the Landing Zone.
-* **Data Warehouse Modeling:** Transforming raw data into a Star Schema (Fact, Dimension, and Bridge tables) within the Gold Layer using an efficient modeling system.
-* **Execution Focus:** Elegantly handling many-to-many relationships (such as multi-skill mapping for a single job posting) directly at the warehouse level.
+This project demonstrates the complete data lifecycle, adopting the **ELT (Extract, Load, Transform)** paradigm. It uses **Python** for data ingestion into **Google BigQuery**, orchestrates **Star Schema** transformations via **dbt**, and delivers analytical reporting through **Google Looker Studio**.
 
-### Phase 2: Data Analytics & BI (✅)
-**[View Full Analytics Documentation](data_analytics/README.md)**
+<br>
 
-The second pillar acts as the investigative lens. Utilizing the refined data from the Gold Layer, this phase answers strategic business questions.
-* **Executive Dashboard:** Interactive monitoring of high-level KPIs (Total Job Volume, Median Salary, etc.).
-* **Deep-Dive Analysis:** In-depth statistical exploration using advanced SQL (Window Functions & CTEs) to uncover specific insights, such as:
-  * *The Remote Work Premium* (The correlation between WFH status, salary, and health insurance).
-  * *Skill-Based Hiring* (The shifting trend towards recruitment without academic degree requirements).
-  * *Skill Valuation Map* (The intersection of market demand and financial compensation).
+## 🎯 Objectives
 
-### Phase 3: Data Application (In Progress)
-**[Go to Application Repository]** *(To be added)*
+| # | Goal |
+|:-:|------|
+| 1 | Build an end-to-end **ELT data pipeline** |
+| 2 | Design a dimensional data warehouse using a **Medallion Architecture** |
+| 3 | Standardize and automate data transformations using **dbt** |
+| 4 | Deliver business insights through **dynamic BI dashboards** |
 
-The third pillar is the development of a downstream product. This phase focuses on designing an interactive application (such as a Market Value Predictor) that consumes data flow from the Data Warehouse to provide specific recommendations and salary estimates based on structured end-user inputs.
+<br>
 
-## Repository Structure
+## 🏗️ Project Structure
+
+This project follows a modular architecture that strictly separates data ingestion, business analytics, and downstream application consumption — mirroring how production data teams organize their work.
+
+<table>
+<tr>
+<td width="70">✅</td>
+<td>
+
+### Phase 1 — Data Engineering
+**[📖 View Full Engineering Documentation →](data_engineering/README.md)**
+
+The foundation of the data factory. The ELT process ensures data quality and integrity before any analysis occurs.
+- **Extraction & Ingestion** — pulling raw data from external sources into the Landing Zone
+- **Data Warehouse Modeling** — transforming raw data into a Star Schema (Fact, Dimension, and Bridge tables) within the Gold Layer
+- **Execution Focus** — elegantly handling many-to-many relationships (e.g. multi-skill mapping per job posting) directly at the warehouse level
+
+</td>
+</tr>
+<tr>
+<td width="70">✅</td>
+<td>
+
+### Phase 2 — Data Analytics & BI
+**[📖 View Full Analytics Documentation →](data_analytics/README.md)**
+
+The investigative lens. Using refined data from the Gold Layer, this phase answers strategic business questions.
+- **Executive Dashboard** — interactive monitoring of high-level KPIs (Total Job Volume, Median Salary, etc.)
+- **Deep-Dive Analysis** — advanced SQL (Window Functions & CTEs) to uncover:
+  - 🏠 *The Remote Work Premium* — correlation between WFH status, salary, and health insurance
+  - 🎓 *Skill-Based Hiring* — the shifting trend toward recruitment without academic degree requirements
+  - 💡 *Skill Valuation Map* — the intersection of market demand and financial compensation
+
+</td>
+</tr>
+<tr>
+<td width="70">🚧</td>
+<td>
+
+### Phase 3 — Data Application
+**[🔗 Go to Application Repository](#)** *(to be added)*
+
+The downstream product layer. This phase focuses on an interactive application (such as a **Market Value Predictor**) that consumes the Data Warehouse to provide salary estimates and recommendations based on structured user input.
+
+</td>
+</tr>
+</table>
+
+<br>
+
+## 📂 Repository Structure
+
 ```text
 DataJobAnalytics/
 │
@@ -51,12 +98,22 @@ DataJobAnalytics/
 └── README.md                            # Main project documentation
 ```
 
+<br>
 
-## Technology Stack
-| Category               | Technology             | Purpose                                                                                          |
-| ---------------------- | ---------------------- | ------------------------------------------------------------------------------------------------ |
-| **Programming**        | Python                 | Handles the Extract and Load (EL) orchestration to move raw data into the warehouse.             |
-| **Data Warehouse**     | Google BigQuery        | Serves as the analytical data warehouse using the Medallion Architecture (Bronze, Silver, Gold). |
-| **Transformation**     | dbt (Data Build Tool)  | Automates data cleansing, standardizes structures, and orchestrates SQL transformations.         |
-| **Data Modeling**      | Star Schema            | Organizes analytical data into centralized fact and dimensional tables.                          |
-| **Visualization**      | Google Looker Studio   | Translates curated data into actionable insights via interactive dashboards.                     |
+## ⚙️ Technology Stack
+
+| Category | Technology | Purpose |
+|---|---|---|
+| 🐍 **Programming** | Python | Handles the Extract and Load (EL) orchestration to move raw data into the warehouse |
+| 🏢 **Data Warehouse** | Google BigQuery | Serves as the analytical data warehouse using the Medallion Architecture (Bronze, Silver, Gold) |
+| 🔧 **Transformation** | dbt (Data Build Tool) | Automates data cleansing, standardizes structures, and orchestrates SQL transformations |
+| ⭐ **Data Modeling** | Star Schema | Organizes analytical data into centralized fact and dimensional tables |
+| 📈 **Visualization** | Google Looker Studio | Translates curated data into actionable insights via interactive dashboards |
+
+<br>
+
+<div align="center">
+
+**[Data Engineering →](data_engineering/README.md)** · **[Data Analytics →](data_analytics/README.md)**
+
+</div>
